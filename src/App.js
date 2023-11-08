@@ -1,11 +1,13 @@
-import { useCallback, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import "./App.css";
 import { romanNumberConverter } from "roman-numerals-converter-hetic";
+import nerd from './nerd.gif'
 
 function App() {
   const [result, setResult] = useState("");
   const [inputNumber, setInputNumber] = useState("");
   const [convertType, setConvertType] = useState("toRoman");
+  const [showGif, setShowGif] = useState(false)
 
   const handleConvertToRoman = (number) => {
     setResult(romanNumberConverter(number));
@@ -56,7 +58,14 @@ function App() {
       default:
         break;
     }
+    setShowGif(true)
   }, [convertType, inputNumber, handleConvertToArabic]);
+
+  useEffect(() => {
+    showGif && setTimeout(() => {
+      setShowGif(false)
+    }, 2000)
+  }, [showGif])
 
   return (
     <div className="App">
@@ -127,6 +136,10 @@ function App() {
             <input type="text" value={result} style={{ width: "300px" }} />
           </div>
         </div>
+        {
+          showGif && 
+        <img src={nerd} className="position-absolute bottom-0 end-0" alt="Geek" />
+        }
       </header>
     </div>
   );
