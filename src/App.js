@@ -64,7 +64,7 @@ function App() {
   useEffect(() => {
     showGif && setTimeout(() => {
       setShowGif(false)
-    }, 2000)
+    }, 1800)
   }, [showGif])
 
   return (
@@ -72,26 +72,26 @@ function App() {
       <header className="App-header">
         <div className="container d-flex flex-column align-items-center gap-3">
           <div
-            className="card p-5 d-flex flex-column align-items-center gap-3"
+            className="card bg-dark text-light p-5 d-flex flex-column align-items-center gap-3"
             style={{ width: "fit-content" }}
           >
             <h4 className="text-center">Convertisseur</h4>
             <div className="d-flex gap-4">
-              <label>
+              <label className="d-flex gap-2">
                 <input
                   type="radio"
                   checked={convertType=== "toRoman"}
                   onChange={() => setConvertType('toRoman')}
                 />
-                Vers Romain
+                <small>Vers Romain</small>
               </label>
-              <label>
+              <label className="d-flex gap-2">
                 <input
                   type="radio"
                   checked={convertType=== "toArabic"}
                   onChange={() => setConvertType('toArabic')}
                 />
-                Vers Arabe
+                <small>Vers Arabe</small>
               </label>
             </div>
             {
@@ -129,11 +129,11 @@ function App() {
             </button>
           </div>
           <div
-            className="card p-5 d-flex flex-column align-items-center gap-3"
+            className="card text-white bg-dark p-5 d-flex flex-column align-items-center gap-3"
             style={{ width: "fit-content" }}
           >
             <h4 className="text-center">Résultat</h4>
-            <input type="text" value={result} style={{ width: "300px" }} />
+            <input className="form-control" type="text" value={result} style={{ width: "300px" }} />
           </div>
         </div>
         {
